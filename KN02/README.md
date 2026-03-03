@@ -77,3 +77,102 @@ Bei **PaaS** stellt der Anbieter eine fertige Plattform bereit:
 ✔ Dienste korrekt zugeordnet  
 ✔ Unterschiede zwischen IaaS und PaaS erklärt  
 ✔ Dokumentation im Repository festgehalten  
+
+
+
+
+# ⚙️ Teil 2 / Infrastructure as Code (IaC)
+
+## 📌 1. Aufgabe: Automatisierung vs. Manuelle Konfiguration
+
+### ❓ Warum ist Automatisierung besser als manuelle Konfiguration?
+
+- **Schneller** → Systeme können in Sekunden/Minuten bereitgestellt werden  
+- **Weniger Fehler** → menschliche Fehler werden reduziert  
+- **Wiederholbar** → gleiche Konfiguration jederzeit reproduzierbar  
+- **Skalierbar** → mehrere Systeme gleichzeitig aufsetzen  
+- **Effizient** → weniger manuelle Arbeit, mehr Fokus auf wichtige Aufgaben  
+- **Stabil** → getestete Konfigurationen werden immer gleich angewendet  
+
+---
+
+### ❓ Was bedeutet Infrastructure as Code (IaC)?
+
+**Definition:**
+
+Infrastructure as Code (IaC) bedeutet, dass IT-Infrastruktur (Server, Netzwerke, etc.) **als Code in Dateien beschrieben** wird.
+
+👉 Diese Dateien:
+- werden automatisch ausgeführt  
+- sind versioniert (z.B. Git)  
+- können getestet und wiederverwendet werden  
+
+👉 Ziel:
+- **Automatisierung**
+- **Standardisierung**
+- **Nachvollziehbarkeit**
+
+---
+
+## 🛠️ 2. Aufgabe: Tools und Konzepte
+
+### 🔹 Tool 1: Docker
+
+- Plattform zur **Containerisierung von Anwendungen**
+- Verpackt Anwendung + Abhängigkeiten in Container
+- Läuft überall gleich (Laptop, Server, Cloud)
+
+👉 **Use Case:**
+- Web-App schnell starten ohne komplizierte Installation
+
+---
+
+### 🔹 Tool 2: Terraform
+
+- Tool zur **automatischen Bereitstellung von Infrastruktur**
+- Ressourcen werden als Code definiert (z.B. Server, Netzwerke)
+
+👉 Beispiel:
+- AWS-Server automatisch erstellen
+
+👉 Vorteile:
+- Wiederholbar
+- Versionskontrolle möglich
+
+---
+
+## ☸️ Kubernetes & Container-Orchestrierung
+
+### 🔹 Kubernetes
+
+- Open-Source-Plattform zur **Verwaltung von Containern**
+- Automatisiert Deployment, Skalierung und Betrieb
+
+---
+
+### 🔹 Container-Orchestrierung (Stichpunkte)
+
+- Verwaltung vieler Container gleichzeitig  
+- Automatisches Starten/Stoppen von Containern  
+- **Skalierung** (mehr/weniger Container je nach Bedarf)  
+- **Load Balancing** (Verteilung der Last)  
+- **Self-Healing** (defekte Container werden neu gestartet)  
+- **Rollouts & Updates** ohne Downtime  
+
+---
+
+## 🧠 Verständnis (eigene Zusammenfassung)
+
+- IaC macht Infrastruktur **programmierbar**
+- Docker macht Anwendungen **portabel**
+- Kubernetes verwaltet Container **automatisch und effizient**
+
+---
+
+## 📌 Ziel erreicht
+
+✔ Automatisierung vs. manuell verstanden  
+✔ IaC erklärt  
+✔ Tools (Docker, Terraform) verstanden  
+✔ Kubernetes & Orchestrierung erklärt  
+✔ Dokumentation im Repository ergänzt  
