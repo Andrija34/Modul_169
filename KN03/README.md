@@ -562,3 +562,229 @@ Volumes korrekt eingesetzt
 ✔ Begriff „Persistent“ erklären können
 ✔ Container löschen & neu erstellen ohne Datenverlust
 ✔ Dokumentation im Repo mit Screenshots vorhanden
+
+
+
+# 🐳 Teil 4 /  OCI-Images mit Docker – BUILD & CUSTOMIZATION
+
+## Ausgangslage
+
+In der vorherigen Challenge haben wir gelernt, wie man bestehende OCI-Images aus einer Registry bezieht und daraus Container startet. Nun geht es einen Schritt weiter: Wir wollen **eigene Images erstellen** und mit Inhalten anpassen.
+
+📌 In dieser Challenge geht es darum, ein eigenes OCI-Image zu erstellen, zu konfigurieren und zu erweitern. Dabei lernen wir Konzepte wie **Dockerfile**, den **docker build**-Prozess und den Umgang mit benutzerdefinierten Images.
+
+---
+
+# Warum eigene Images erstellen?
+
+Eigene Images ermöglichen es, Software in einer konsistenten und portablen Umgebung bereitzustellen. Entwickler können Images so gestalten, dass alle benötigten Abhängigkeiten enthalten sind, und diese dann unkompliziert in verschiedenen Umgebungen nutzen.
+
+---
+
+# Dockerfile und Image-Building
+
+Wir nutzen ein **Dockerfile**, um ein OCI-Image zu definieren, und den Befehl **docker build**, um es zu erstellen. Anschließend kann das Image in eine Registry hochgeladen und wiederverwendet werden.
+
+---
+
+# ℹ️ Dockerfile
+
+Ein Dockerfile ist eine Textdatei mit Anweisungen, wie ein Image aufgebaut sein soll. Es enthält Informationen darüber, welche Basis verwendet wird, welche Dateien hinzugefügt werden und welche Befehle ausgeführt werden sollen.
+
+Vorgehen:
+- Verzeichnis erstellen
+- Datei **Dockerfile** anlegen (grosses D, keine Endung)
+- Befehle definieren, die Docker beim Build ausführt
+
+---
+
+# Begriffe, die behandelt werden
+
+- **Dockerfile**: Textdatei mit Anweisungen für den Bau eines OCI-Images  
+- **docker build**: Befehl, um aus einem Dockerfile ein Image zu erstellen  
+- **Layering**: Jede Dockerfile-Anweisung erzeugt einen neuen Layer  
+- **Caching**: Unveränderte Layer werden wiederverwendet, um Builds zu beschleunigen  
+
+---
+
+# Layer / Imageschichten
+
+Jede Anweisung in einem Dockerfile führt zu einer neuen Schicht (Layer), die wieder zum Starten eines neuen Containers genutzt werden kann.
+
+Ablauf:
+- Container mit vorherigem Layer starten
+- Dockerfile-Anweisung ausführen
+- Neues Image speichern
+- Temporären Container löschen
+
+---
+
+# Anweisungen im Dockerfile (Kurzbeschreibung)
+
+## FROM
+Base Image auswählen (z.B. `ubuntu:24.04`)
+
+## ADD
+Kopiert Dateien aus Build Context oder URLs ins Image
+
+## CMD
+Standard-Befehl beim Container-Start (falls ENTRYPOINT existiert: als Argument)
+
+## COPY
+Kopiert Dateien aus Build Context ins Image
+
+## ENV
+Setzt Umgebungsvariablen im Image
+
+## EXPOSE
+Dokumentiert Ports, an denen ein Dienst lauscht
+
+## MAINTAINER
+Autor-Metadaten (heute oft via LABEL ersetzt)
+
+## RUN
+Führt Befehle beim Build im Container aus und speichert Ergebnis als Layer
+
+## SHELL
+Setzt die Shell für folgende RUN-Befehle (bash/zsh/powershell möglich)
+
+## USER
+Setzt den Benutzer für folgende Befehle
+
+## VOLUME
+Deklariert ein Verzeichnis als Volume (persistente Daten)
+
+## WORKDIR
+Setzt Arbeitsverzeichnis für folgende Anweisungen
+
+---
+
+# Beispiel eines einfachen Dockerfiles
+
+```dockerfile
+# Basis-Image
+FROM ubuntu:latest
+
+# Metadaten (optional)
+LABEL maintainer="Ihr Name <email@example.com>"
+
+# Pakete installieren
+RUN apt-get update && apt-get install -y curl
+
+# Standard-Befehl beim Start
+CMD ["bash"]
+Image build (tag & push)
+Build Context
+
+Der Befehl docker build benötigt:
+
+Dockerfile
+
+Build Context (lokale Dateien/Verzeichnisse für COPY/ADD)
+
+Build ausführen:
+
+docker build -t mein-image:1.0 .
+
+-t setzt Name und Tag des Images
+
+. bedeutet: Dockerfile liegt im aktuellen Verzeichnis (Build Context = aktuelles Verzeichnis)
+
+Hands-on Lab
+
+In diesem Lab erstellen, modifizieren und verwalten Sie OCI-Images mit Docker über zwei Ansätze:
+
+Manuelle Anpassung + Commit eines Containers
+
+Automatisierte Image-Erstellung mit Dockerfile
+
+Variante 1: Manuelle Anpassung und Commit eines Containers
+Ziel
+
+Neues Image aus einem laufenden, aktualisierten Container erstellen.
+
+Vorgehen (grob)
+
+Ubuntu-Container starten und betreten
+
+Status prüfen (Image, Größe, Layer, Container-Status)
+
+Container anpassen: apt update und Pakete installieren (cowsay, fortune)
+
+Programme testen
+
+Container-Zustand in neues Image committen
+
+Neues Image validieren (Container starten und prüfen)
+
+Variante 2: Automatisierte Image-Erstellung mit Dockerfile
+Ziel
+
+Neues Image reproduzierbar über Dockerfile bauen.
+
+Vorgehen (grob)
+
+Dockerfile erstellen (Ubuntu + cowsay + fortune + Apache)
+
+index.html erstellen mit persönlicher Nachricht
+
+Image bauen und testen (Apache/Webserver)
+
+Bestehende Container löschen (Namenskonflikte vermeiden)
+
+Dockerfile anpassen: statt Apache soll cowsay direkt starten
+
+Neues Image bauen und testen
+
+Ergebnis vergleichen (Image-History / Layer / Output)
+
+ℹ️ Info
+
+Ziel ist, die Grundlagen der Containerisierung und Image-Verwaltung zu verstehen – von manuellen Container-Änderungen bis zu reproduzierbaren Builds mit Dockerfile.
+
+Hilfe
+
+Für detaillierte Schritte:
+
+Anleitung: Docker build Images erstellen
+
+Tutorial (21min, Marco Berger) als Walkthrough
+
+🟢 4. Teil-Challenge
+
+Führen Sie das dokumentierte Lab durch (Tutorial 21 Min. als Unterstützung).
+
+Ziel
+
+Am Ende erfüllt:
+
+Neues Image aus aktualisiertem Ubuntu-Container mit Zusatzpaketen
+
+Dockerfile-basiertes Image (Apache oder cowsay Output)
+
+Verständnis der Layer-Struktur (Vergleich Image-Historien)
+
+Container sicher starten, testen, stoppen, löschen
+
+Reproduzierbare Build-Prozesse (Commit vs Dockerfile)
+
+4a. Teil-Leistungsnachweis – Lab & Doku im Repo
+
+✔ Screenshot: Container mit eigener index.html:
+Hello from M169 Container: <Ihr Nachname>
+
+✔ Ubuntu-Container starten, hinein wechseln, Änderungen machen, verlassen
+
+✔ Container-Zustand in neues Image committen und Layer-Veränderung nachvollziehen (Variante 1)
+
+✔ Dockerfile erstellen, modifizieren, Image bauen (Variante 2)
+
+✔ Live-Demo: Container aus neuem Image starten und Funktion nachweisen
+(cowsay/fortune oder Webserver)
+
+✔ Repo-Doku nachvollziehbar mit eigenen Screenshots
+
+4b. Teil-Leistungsnachweis – Fachgespräch
+
+✔ Unterschied erklären:
+Manuelle Container-Anpassung (Commit) vs automatisierte Image-Erstellung (Dockerfile)
