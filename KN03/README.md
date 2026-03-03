@@ -788,3 +788,134 @@ Hello from M169 Container: <Ihr Nachname>
 
 ✔ Unterschied erklären:
 Manuelle Container-Anpassung (Commit) vs automatisierte Image-Erstellung (Dockerfile)
+
+
+
+# 🌐 Teil 5 / Container Netzwerk – VERTIEFUNG
+
+## Ausgangslage
+
+In den vorherigen Labs wurden bereits Serverdienste wie MySQL oder ein Webserver in Containern betrieben. Der Zugriff von außen erfolgt über **Port-Mapping**.
+
+Mit `-p` oder `-P` im `docker run`-Befehl werden Container-Ports auf den Host weitergeleitet.
+
+Beispiel:
+
+```bash
+docker run --rm -d -p 3306:3306 mysql
+
+Automatische Portvergabe:
+
+docker run --rm -d -P mysql
+EXPOSE im Dockerfile
+
+Ports werden im Dockerfile dokumentiert mit:
+
+EXPOSE 3306
+
+⚠️ EXPOSE öffnet keinen Port automatisch – es dokumentiert nur den vorgesehenen Port.
+
+Container-Networking
+
+Docker-Netzwerke können unabhängig von Containern erstellt und verwaltet werden.
+
+Standard-Netzwerke
+bridge
+
+Standard-Netzwerk
+
+Port-Mapping möglich
+
+Container können sich intern erreichen
+
+host
+
+Container nutzt direkt das Host-Netzwerk
+
+Kein Port-Mapping nötig
+
+Weniger Isolation
+
+none
+
+Keine Netzwerkschnittstelle
+
+Vollständig isoliert
+
+Wichtige Befehle
+Netzwerke anzeigen
+docker network ls
+Netzwerk detailliert inspizieren
+docker network inspect bridge
+Container ohne Netzwerk starten
+docker run --network=none -it --name c1 --rm busybox
+ifconfig
+Container mit Host-Netzwerk starten
+docker run --network=host -itd --name c1 --rm busybox
+docker inspect host
+Eigenes Bridge-Netzwerk erstellen
+docker network create --driver bridge xxx-mynetwork
+Netzwerk überprüfen
+docker network inspect xxx-mynetwork
+
+Wichtig:
+
+Subnetz-ID
+
+CIDR (z.B. 172.18.0.0/16)
+
+Container im eigenen Netzwerk starten
+
+MySQL starten:
+
+docker run --rm -d --network=xxx-mynetwork --name mysql mysql
+
+Ubuntu starten:
+
+docker run -it --rm --network=xxx-mynetwork --name ubuntu ubuntu:24.10 bash
+Verbindung im Ubuntu-Container testen
+apt-get update && apt-get install -y curl
+curl -f http://mysql:3306
+
+Ergebnis:
+Container können sich über den Containernamen erreichen.
+
+Netzwerke löschen
+
+Einzelnes Netzwerk löschen:
+
+docker network rm xxx-mynetwork
+
+Nicht verwendete Netzwerke löschen:
+
+docker network prune
+🟢 5. Teil-Challenge
+Ziel
+
+Verständnis der Docker-Netzwerke:
+
+Netzwerkmodi kennen
+
+Eigene Netzwerke erstellen
+
+Container miteinander verbinden
+
+Netzwerke analysieren und löschen
+
+Erwartete Resultate
+
+✔ Vorhandene Netzwerke analysiert (docker network ls)
+✔ Eigenes Netzwerk xxx-mynetwork erstellt
+✔ Subnetz-ID und CIDR dokumentiert
+✔ MySQL-Container im eigenen Netzwerk gestartet
+✔ Mit docker network inspect überprüft
+✔ Ungenutzte Netzwerke gelöscht
+✔ Dokumentation mit Screenshots im Repo vorhanden
+
+Leistungsnachweis
+
+✔ Netzwerke anzeigen und inspizieren
+✔ Eigenes Netzwerk erstellt
+✔ Container im Netzwerk nachweisbar
+✔ Netzwerke korrekt löschen können
+✔ Ablauf vollständig dokumentiert
