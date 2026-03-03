@@ -176,3 +176,71 @@ Infrastructure as Code (IaC) bedeutet, dass IT-Infrastruktur (Server, Netzwerke,
 ✔ Tools (Docker, Terraform) verstanden  
 ✔ Kubernetes & Orchestrierung erklärt  
 ✔ Dokumentation im Repository ergänzt  
+
+
+
+# ☁️ 3 Teil / Cloud Plattformen Vergleich
+
+## 📊 1. Aufgabe: Globale Infrastruktur vergleichen
+
+| Plattform | Regionen weltweit | Verfügbarkeitszonen (AZs) | Besonderheiten |
+|----------|------------------|--------------------------|----------------|
+| **AWS**  | 31               | 99                       | Marktführer, sehr ausgereifte Infrastruktur |
+| **Azure**| 60+              | mehrere pro Region       | Starke Hybrid-Cloud & Microsoft-Integration |
+| **GCP**  | 38               | 100+                     | Sehr leistungsstarkes Netzwerk (Google) |
+
+---
+
+## ⚙️ 2. Aufgabe: Vergleich eines Dienstes (Compute)
+
+### 🔹 AWS – Amazon EC2
+- Virtuelle Maschinen mit voller Kontrolle
+- Viele Instanztypen (CPU, RAM, GPU optimiert)
+- Skalierung manuell oder automatisch (Auto Scaling)
+
+---
+
+### 🔹 Azure – Azure Virtual Machines
+- Ähnlich wie EC2, stark integriert in Microsoft-Umgebung
+- Gute Unterstützung für Windows-Server
+- Integration mit Azure Active Directory
+
+---
+
+### 🔹 GCP – Compute Engine
+- Virtuelle Maschinen mit hoher Performance
+- Flexible Preisgestaltung (z.B. automatische Rabatte)
+- Sehr schnelle Netzwerk-Infrastruktur
+
+---
+
+## 🔍 Vergleich (Compute-Dienste)
+
+| Kriterium        | AWS EC2                | Azure VM                  | GCP Compute Engine       |
+|------------------|----------------------|---------------------------|--------------------------|
+| Anbieter         | Amazon               | Microsoft                 | Google                   |
+| Fokus            | Flexibilität         | Integration (Microsoft)   | Performance & Daten      |
+| Skalierung       | Auto Scaling         | VM Scale Sets             | Managed Instance Groups  |
+| Besonderheit     | Marktstandard        | Hybrid-Cloud              | Schnelles Netzwerk       |
+
+---
+
+## 🧠 Fazit
+
+- **AWS** → grösste Auswahl, sehr flexibel  
+- **Azure** → ideal für Microsoft-Umgebungen  
+- **GCP** → stark bei Performance und Datenanalyse  
+
+Alle drei bieten ähnliche Grunddienste, unterscheiden sich aber in:
+- Integration  
+- Performance  
+- Spezialisierung  
+
+---
+
+## 📌 Ziel erreicht
+
+✔ Infrastruktur verglichen (Regionen & Zonen)  
+✔ Compute-Dienste analysiert  
+✔ Unterschiede verständlich dokumentiert  
+✔ Repository aktualisiert  
