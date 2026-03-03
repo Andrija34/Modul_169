@@ -409,3 +409,156 @@ Image vs. Container erklären
 Bedeutung von Docker Hub erklären
 Vorteile isolierter Container erklären
 Bonus: nginx-Webserver live demonstrieren
+
+
+
+# 🐳 Teil 3 /  OCI-Images mit Docker – RUN & ADMINISTRATION
+
+## Ausgangslage
+
+Container-Technologien wie Docker ermöglichen es, Anwendungen isoliert auszuführen. Zwei zentrale Konzepte spielen dabei eine wichtige Rolle:
+
+- **Networking**
+- **Volumes**
+
+Diese Konzepte erlauben:
+- Zugriff von außen auf Container
+- Persistente Datenspeicherung über den Container-Lebenszyklus hinaus
+
+---
+
+# Container Networking
+
+Wenn ein Webserver in einem Container läuft, muss dieser über **Ports** erreichbar gemacht werden.
+
+Dies geschieht mit:
+
+- `-p` → explizite Portweiterleitung
+- `-P` → automatische Portzuweisung
+
+## Beispiele
+
+MySQL Container an Host-Port 3306 binden:
+
+```bash
+docker run --rm -d -p 3306:3306 mysql
+
+Automatische Portvergabe:
+
+docker run --rm -d -P mysql
+Dockerfile – Ports freigeben
+
+Ports werden im Dockerfile mit EXPOSE definiert:
+
+EXPOSE 3306
+Netzwerkmodi
+
+Bridge (Standard)
+None (keine Netzwerkschnittstelle)
+Host (nutzt Host-Netzwerk direkt)
+
+Zusätzlich: Benutzerdefinierte Netzwerke möglich
+
+Container Volumes
+
+Container verlieren ihre Daten beim Löschen.
+Volumes ermöglichen persistente Speicherung.
+
+Vorteile von Volumes
+
+Daten bleiben nach Container-Löschung erhalten
+
+Mehrere Container können Daten teilen
+
+Performance-optimiert
+
+Unabhängig vom Container-Lebenszyklus
+
+Docker löscht Volumes nie automatisch
+
+Beispiel Volume-Mount
+
+MySQL-Datenverzeichnis auf Host einhängen:
+
+docker run -d -p 3306:3306 -v ~/data/mysql:/var/lib/mysql --name mysql --rm mysql
+
+Dateien prüfen:
+
+ls -l ~/data/mysql
+Hands-on Lab – MariaDB mit Docker
+
+Ziel:
+MariaDB in einem Container betreiben und persistent speichern.
+
+Lernziele
+
+Container starten, stoppen, löschen
+
+Verbindung mit HeidiSQL herstellen
+
+Port-Forwarding einrichten
+
+Persistente Speicherung mit Volumes
+
+Troubleshooting durchführen
+
+Ablauf
+Schritt 1 – Vorbereitung
+
+HeidiSQL installieren
+
+Docker Images prüfen
+
+MariaDB-Image laden
+
+Container starten
+
+Schritt 2 – Container verwalten
+
+Container stoppen
+
+Container starten
+
+Container löschen
+
+Security Group ggf. anpassen
+
+Schritt 3 – Datenbank erstellen
+
+Verbindung via HeidiSQL herstellen
+
+Datenbank erstellen:
+
+M169_KN03_XXX
+
+(XXX = erste drei Buchstaben des Nachnamens)
+
+Schritt 4 – Datenpersistenz testen
+
+Volume einrichten
+
+Container löschen
+
+Container neu erstellen
+
+Prüfen, ob Datenbank weiterhin existiert
+
+Ziel der Übung
+
+MariaDB läuft im Container
+
+Zugriff via HeidiSQL möglich
+
+Port-Forwarding funktioniert
+
+Daten bleiben persistent gespeichert
+
+Volumes korrekt eingesetzt
+
+3. Teil-Leistungsnachweis
+
+✔ Verbindung via HeidiSQL möglich (Live-Demo)
+✔ Wechsel in laufenden Container möglich
+✔ Begriff „Persistent“ erklären können
+✔ Container löschen & neu erstellen ohne Datenverlust
+✔ Dokumentation im Repo mit Screenshots vorhanden
