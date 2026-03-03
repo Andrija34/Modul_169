@@ -83,15 +83,16 @@ runcmd:
   - systemctl enable podman
   - usermod -aG docker ubuntu
 ```
-Instanz starten.
 
-SSH-Zugriff
-Speicherort Private Key
+## Instanz starten
 
-Windows Beispiel:
-```
-C:\Users\<Benutzer>\.ssh\
-```
+EC2-Instanz in AWS starten und warten, bis der Status **running** ist.
+
+---
+
+## SSH-Zugriff
+
+### Speicherort Private Key (Windows Beispiel)
 Verbindung herstellen
 chmod 400 M169.pem
 ssh -i M169.pem ubuntu@<Public-IP>
