@@ -1,4 +1,4 @@
-# 🚀 AWS EC2 mit Infrastructure as Code (IaC) – Learner Lab
+# 🚀 Teil 1 / AWS EC2 mit Infrastructure as Code (IaC) – Learner Lab
 
 ## Ausgangslage
 
@@ -174,3 +174,238 @@ Leistungsnachweis
 ✔ Podman installiert
 ✔ Unterschied Docker vs. Podman verstanden
 ✔ Repository vollständig dokumentiert
+
+
+
+# Teil 2 / OCI-Images, Container und Registry – BASICS
+
+## Ausgangslage
+
+Moderne Softwareentwicklung erfordert flexible und portable Lösungen, um Anwendungen unabhängig von der Umgebung lauffähig zu machen. Klassische Installationen sind oft fehleranfällig, da sie von der spezifischen Systemkonfiguration abhängen.
+
+Docker, Podman und ähnliche Tools lösen dieses Problem, indem sie Anwendungen und alle benötigten Abhängigkeiten in **Containern** verpacken. Dadurch laufen sie zuverlässig auf unterschiedlichen Systemen – egal ob Laptop, Server oder Cloud.
+
+📌 In diesem Challenge geht es um die **Basic-Konzepte und Commands** rund um OCI-Images, Container und Registries. Es werden noch keine eigenen Images erstellt (kein Dockerfile, kein eigener Code).
+
+---
+
+# Warum starten wir mit Docker?
+
+Docker ist:
+
+- Industriestandard
+- Weit verbreitet
+- Gut dokumentiert
+- Große Community
+- Viele Tutorials und Beispiele
+
+Podman wird später behandelt.
+
+---
+
+# Unterschied Docker vs. Podman
+
+Docker:
+- Benötigt zentralen Daemon (dockerd)
+- Läuft meist mit Root-Rechten
+- Sehr verbreitet im Enterprise-Bereich
+
+Podman:
+- Kein zentraler Daemon
+- Arbeitet nutzerbasiert
+- Unterstützt rootless Mode
+- Höhere Sicherheit
+
+---
+
+# OCI-Images und Container
+
+Ein OCI-Image ist eine Vorlage (Bauplan).  
+Ein Container ist die laufende Instanz dieses Images.
+
+## Vergleich mit Postpaketen
+
+OCI-Image = Verpackung mit Smartphone + Zubehör  
+Container = Das ausgepackte, laufende Smartphone  
+Registry = Lager mit allen Paketen (z.B. Docker Hub)
+
+---
+
+# Wichtige Begriffe
+
+Registry  
+Online-Speicher für Images (Docker Hub, GitLab Registry)
+
+Docker-Daemon  
+Hintergrunddienst zur Verwaltung von Containern
+
+Docker-Client  
+CLI-Tool zur Kommunikation mit Docker (z.B. docker ps)
+
+OCI-Image  
+Bauplan für Container
+
+Image vs. Container  
+Image = Vorlage  
+Container = Laufende Instanz
+
+---
+
+# Basic Docker Commands
+
+## docker run
+
+Startet einen neuen Container.
+
+Test:
+```bash
+docker run hello-world
+
+Interaktive Shell:
+
+docker run -it ubuntu /bin/bash
+
+Detached Mode:
+
+docker run -d ubuntu sleep 20
+
+Container automatisch löschen:
+
+docker run -d --rm ubuntu sleep 20
+docker ps
+
+Aktive Container:
+
+docker ps
+
+Alle Container:
+
+docker ps -a
+
+Nur IDs:
+
+docker ps -a -q
+docker images
+
+Lokale Images anzeigen:
+
+docker images
+
+Alternative:
+
+docker image ls
+Container und Images löschen
+
+Container löschen:
+
+docker rm <NAME>
+
+Image löschen:
+
+docker rmi ubuntu
+Container starten
+
+Gestoppten Container starten:
+
+docker start <ID>
+Container stoppen / killen
+
+Sauber stoppen:
+
+docker stop <ID>
+
+Sofort beenden:
+
+docker kill <ID>
+Informationen zu Containern
+
+Logs anzeigen:
+
+docker logs <ID>
+
+Details anzeigen:
+
+docker inspect <ID>
+
+Änderungen anzeigen:
+
+docker diff <ID>
+
+Prozesse anzeigen:
+
+docker top <ID>
+🟢 2. Teil-Challenge
+SSH-Verbindung zur EC2
+ssh -i M169.pem ubuntu@<Public-IP>
+Docker überprüfen
+docker info
+docker --version
+Erste Docker-Befehle
+
+Images anzeigen:
+
+docker image ls
+
+Laufende Container:
+
+docker ps
+
+Image aus Registry laden:
+
+docker pull hello-world
+
+Container starten:
+
+docker run hello-world
+
+Container stoppen und löschen:
+
+docker stop <ID>
+docker rm <ID>
+Sonder-Challenge – NGINX Webserver
+
+Container starten:
+
+docker run -d -p 8080:80 nginx
+
+Browser öffnen:
+
+http://<Public-IP>:8080
+
+Falls kein Zugriff:
+
+Security Group um Port 8080 erweitern
+
+Überprüfung:
+
+docker container ls
+docker image ls
+
+Ergebnis:
+NGINX Standard-Webseite sichtbar
+
+Ziel der Übung
+
+Grundbegriffe verstehen
+
+Unterschied Image vs. Container kennen
+
+Registry verstehen
+
+Docker-Befehle ausführen können
+
+Container isoliert erklären können
+
+Teil-Leistungsnachweis
+
+✔ docker run, docker ps, docker stop ausführen
+✔ Container starten und Status prüfen
+✔ Unterschied Container vs. VM erklären
+✔ Isolation von Containern erklären
+
+Fachgespräch
+
+Image vs. Container erklären
+Bedeutung von Docker Hub erklären
+Vorteile isolierter Container erklären
+Bonus: nginx-Webserver live demonstrieren
