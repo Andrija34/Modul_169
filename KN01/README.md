@@ -13,14 +13,19 @@ Anschliessend habe ich Git (GitBash) auf meinem lokalen Rechner installiert. Nac
 !![Bild](image.png)
 
 
-Im nächsten Schritt habe ich ein SSH-Keypair erstellt, bestehend aus einem privaten und einem öffentlichen Schlüssel. Den Public Key habe ich in meinem GitLab-Account hinterlegt, während der Private Key sicher auf meinem Rechner bleibt. Zusätzlich habe ich den SSH-Key dem SSH-Agent hinzugefügt und (persistent) konfiguriert, sodass ich mich automatisch authentifizieren kann, ohne jedes Mal mein Passwort eingeben zu müssen. Die Verbindung habe ich mit Befehlen wie `ssh -T git@gitlab.com` erfolgreich getestet.
+Im nächsten Schritt habe ich ein SSH-Keypair erstellt, bestehend aus einem privaten und einem öffentlichen Schlüssel. Den Public Key habe ich in meinem GitLab-Account hinterlegt, während der Private Key sicher auf meinem Rechner bleibt. Zusätzlich habe ich den SSH-Key dem SSH-Agent hinzugefügt und (persistent) konfiguriert, sodass ich mich automatisch authentifizieren kann, ohne jedes Mal mein Passwort eingeben zu müssen. ![ssh](image-1.png) ![Beweis](image-2.png)
+Die Verbindung habe ich mit Befehlen wie `ssh -T git@gitlab.com` erfolgreich getestet.
+![VSC](image-3.png)
 
 Danach habe ich ein neues GitLab-Repository erstellt und dieses mit einem lokalen Verzeichnis verknüpft. Ich habe das Repository geklont, die Verbindung überprüft und erste Dateien hinzugefügt. Die vorgegebene README-Vorlage habe ich angepasst und die geforderte Verzeichnisstruktur (KN01–KN05, images, LB2, Reflexion, Quellenverzeichnis) sauber aufgebaut. Anschliessend habe ich die Änderungen mit `git add`, `git commit` und `git push` ins Remote-Repository übertragen und sichergestellt, dass alles korrekt synchronisiert ist.
-
+![git
+](image-4.png)
 Zusätzlich habe ich grundlegende Linux-Befehle in der Git Bash angewendet, um mich im Dateisystem zu bewegen und Dateien zu verwalten. Dazu gehören Befehle wie `cd`, `pwd`, `ls`, `mkdir`, `touch`, `cp`, `mv` und `rm`. Durch praktische Übungen konnte ich den Umgang mit der Kommandozeile festigen und effizienter arbeiten.
 
 Zum Abschluss habe ich Visual Studio Code installiert und als zentrale Entwicklungsumgebung eingerichtet. Ich habe wichtige Extensions wie „Markdown All in One“, „Docker“ und „WSL“ installiert, um meinen Workflow zu optimieren. Danach habe ich mein Repository in VS Code geöffnet, Dateien bearbeitet und Änderungen direkt über die integrierte Git-Funktion committet und gepusht. Dadurch konnte ich den gesamten Entwicklungsprozess in einer einzigen Umgebung durchführen.
-
+![alt text](image-5.png)
+![alt text](image-6.png)
+![alt text](image-7.png)
 ## Erkenntnisse
 
 Während dieses Projekts habe ich ein besseres Verständnis für Versionskontrolle und moderne Entwicklungsprozesse entwickelt. Besonders wichtig war für mich:
