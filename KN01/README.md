@@ -9,6 +9,8 @@ In diesem Projekt habe ich eine vollständige und praxisorientierte Toolumgebung
 Zu Beginn habe ich sichergestellt, dass mein GitLab-Account korrekt eingerichtet ist. Falls nötig, hätte ich einen neuen Account erstellt, meine E-Mail verifiziert und mein Profil ergänzt. Dies bildet die Grundlage für alle weiteren Schritte, da GitLab als zentrale Plattform für die Versionsverwaltung dient.
 
 Anschliessend habe ich Git (GitBash) auf meinem lokalen Rechner installiert. Nach der Installation habe ich überprüft, ob Git korrekt funktioniert, indem ich Befehle wie `git --version` und `git help` ausgeführt habe. Danach habe ich Git konfiguriert, indem ich meinen Benutzernamen und meine E-Mail global gesetzt habe. Diese Informationen sind wichtig, da sie bei jedem Commit gespeichert werden und die Nachvollziehbarkeit von Änderungen gewährleisten.
+![Bild](/images/Screenshot 2026-02-17 092231.png)
+
 
 Im nächsten Schritt habe ich ein SSH-Keypair erstellt, bestehend aus einem privaten und einem öffentlichen Schlüssel. Den Public Key habe ich in meinem GitLab-Account hinterlegt, während der Private Key sicher auf meinem Rechner bleibt. Zusätzlich habe ich den SSH-Key dem SSH-Agent hinzugefügt und (persistent) konfiguriert, sodass ich mich automatisch authentifizieren kann, ohne jedes Mal mein Passwort eingeben zu müssen. Die Verbindung habe ich mit Befehlen wie `ssh -T git@gitlab.com` erfolgreich getestet.
 
