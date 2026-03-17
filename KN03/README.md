@@ -264,17 +264,21 @@ Startet einen neuen Container.
 docker run hello-world
 ```
 
+![alt text](image-7.png)
+
 **Interaktive Shell:**
 
 ```bash
 docker run -it ubuntu /bin/bash
 ```
+![alt text](image-8.png)
 
 **Detached Mode:**
 
 ```bash
 docker run -d ubuntu sleep 20
 ```
+![alt text](image-9.png)
 
 **Container automatisch löschen:**
 
@@ -282,37 +286,35 @@ docker run -d ubuntu sleep 20
 docker run -d --rm ubuntu sleep 20
 ```
 
-```bash
-docker ps
-```
 
 **Aktive Container:**
 
 ```bash
 docker ps
 ```
+![alt text](image-10.png)
 
 **Alle Container:**
 
 ```bash
 docker ps -a
 ```
+![alt text](image-11.png)
 
 **Nur IDs:**
 
 ```bash
 docker ps -a -q
 ```
+![alt text](image-12.png)
 
-```bash
-docker images
-```
 
 **Lokale Images anzeigen:**
 
 ```bash
 docker images
 ```
+![alt text](image-13.png)
 
 **Alternative:**
 
@@ -423,12 +425,16 @@ docker pull hello-world
 docker run hello-world
 ```
 
+![alt text](image-16.png)
+
 **Container stoppen und löschen:**
 
 ```bash
 docker stop <ID>
 docker rm <ID>
 ```
+
+![alt text](image-14.png)
 
 ### Sonder-Challenge – NGINX Webserver
 
@@ -437,6 +443,8 @@ docker rm <ID>
 ```bash
 docker run -d -p 8080:80 nginx
 ```
+
+![alt text](image-15.png)
 
 **Browser öffnen:**
 
@@ -454,6 +462,8 @@ Falls kein Zugriff:
 docker container ls
 docker image ls
 ```
+
+![alt text](image-17.png)
 
 **Ergebnis:**  
 NGINX Standard-Webseite sichtbar
@@ -511,12 +521,13 @@ MySQL Container an Host-Port 3306 binden:
 ```bash
 docker run --rm -d -p 3306:3306 mysql
 ```
-
+![alt text](image-19.png)
 Automatische Portvergabe:
 
 ```bash
 docker run --rm -d -P mysql
 ```
+![alt text](image-20.png)
 
 ### Dockerfile – Ports freigeben
 
@@ -560,6 +571,8 @@ Dateien prüfen:
 ```bash
 ls -l ~/data/mysql
 ```
+![alt text](image-21.png)
+
 
 ## Hands-on Lab – MariaDB mit Docker
 
@@ -596,7 +609,7 @@ Verbindung via HeidiSQL herstellen
 
 Datenbank erstellen:
 
-`M169_KN03_XXX`
+![alt text](<Screenshot 2026-03-03 112428.png>)
 
 (XXX = erste drei Buchstaben des Nachnamens)
 
@@ -817,7 +830,7 @@ Am Ende erfüllt:
 ## 4a. Teil-Leistungsnachweis – Lab & Doku im Repo
 
 - ✔ Screenshot: Container mit eigener index.html:  
-  Hello from M169 Container: `<Ihr Nachname>`
+  Hello from M169 Container
 - ✔ Ubuntu-Container starten, hinein wechseln, Änderungen machen, verlassen
 - ✔ Container-Zustand in neues Image committen und Layer-Veränderung nachvollziehen (Variante 1)
 - ✔ Dockerfile erstellen, modifizieren, Image bauen (Variante 2)
@@ -849,6 +862,8 @@ Automatische Portvergabe:
 ```bash
 docker run --rm -d -P mysql
 ```
+
+![alt text](<Screenshot 2026-03-03 113107.png>)
 
 ## EXPOSE im Dockerfile
 
@@ -890,6 +905,8 @@ Docker-Netzwerke können unabhängig von Containern erstellt und verwaltet werde
 ```bash
 docker network ls
 ```
+![alt text](<Screenshot 2026-03-03 113127.png>)
+
 
 ### Netzwerk detailliert inspizieren
 
@@ -904,12 +921,16 @@ docker run --network=none -it --name c1 --rm busybox
 ifconfig
 ```
 
+![alt text](<Screenshot 2026-03-03 113138.png>)
+
 ### Container mit Host-Netzwerk starten
 
 ```bash
 docker run --network=host -itd --name c1 --rm busybox
 docker inspect host
 ```
+
+![alt text](<Screenshot 2026-03-03 113158.png>)
 
 ### Eigenes Bridge-Netzwerk erstellen
 
@@ -965,6 +986,8 @@ docker network rm xxx-mynetwork
 ```bash
 docker network prune
 ```
+
+![alt text](<Screenshot 2026-03-03 113226.png>)
 
 ## 🟢 5. Teil-Challenge
 
